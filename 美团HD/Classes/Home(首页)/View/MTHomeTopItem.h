@@ -10,4 +10,12 @@
 
 @interface MTHomeTopItem : UIView
 + (instancetype)item;
+
+/**
+ *  设置点击的监听器
+ *
+ *  @param target 监听器
+ *  @param action 监听方法
+ */
+- (void)addTarget:(id)target action:(SEL)action;
 @end

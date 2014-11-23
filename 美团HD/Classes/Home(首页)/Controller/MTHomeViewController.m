@@ -51,14 +51,17 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 2.类别
     MTHomeTopItem *categoryItem = [MTHomeTopItem item];
+    [categoryItem addTarget:self action:@selector(categoryClick)];
     UIBarButtonItem *category = [[UIBarButtonItem alloc] initWithCustomView:categoryItem];
     
     // 3.地区
     MTHomeTopItem *districtItem = [MTHomeTopItem item];
+    [districtItem addTarget:self action:@selector(districtClick)];
     UIBarButtonItem *district = [[UIBarButtonItem alloc] initWithCustomView:districtItem];
     
     // 4.排序
     MTHomeTopItem *sortItem = [MTHomeTopItem item];
+    [sortItem addTarget:self action:@selector(sortClick)];
     UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithCustomView:sortItem];
     
     self.navigationItem.leftBarButtonItems = @[logo, category, district, sort];
@@ -74,8 +77,23 @@ static NSString * const reuseIdentifier = @"Cell";
     self.navigationItem.rightBarButtonItems = @[map, search];
 }
 
-#pragma mark <UICollectionViewDataSource>
+#pragma mark - 顶部item点击方法
+- (void)categoryClick
+{
+    MTLog(@"categoryClick");
+}
 
+- (void)districtClick
+{
+    MTLog(@"districtClick");
+}
+
+- (void)sortClick
+{
+    MTLog(@"sortClick");
+}
+
+#pragma mark <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
 #warning Incomplete method implementation -- Return the number of sections
     return 0;
@@ -96,7 +114,6 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
-
 /*
 // Uncomment this method to specify if the specified item should be highlighted during tracking
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
