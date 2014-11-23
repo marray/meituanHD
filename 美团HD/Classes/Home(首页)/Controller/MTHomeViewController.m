@@ -11,9 +11,17 @@
 #import "UIBarButtonItem+Extension.h"
 #import "UIView+Extension.h"
 #import "MTHomeTopItem.h"
+#import "MTCategoryViewController.h"
 
 @interface MTHomeViewController ()
+/** 分类item */
+@property (nonatomic, weak) UIBarButtonItem *categoryItem;
+/** 地区item */
+@property (nonatomic, weak) UIBarButtonItem *districtItem;
+/** 排序item */
+@property (nonatomic, weak) UIBarButtonItem *sortItem;
 
+@property (nonatomic, strong) UIPopoverController *popover;
 @end
 
 @implementation MTHomeViewController
@@ -46,41 +54,47 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)setupLeftNav
 {
     // 1.LOGO
-    UIBarButtonItem *logo = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_meituan_logo"] style:UIBarButtonItemStyleDone target:nil action:nil];
-    logo.enabled = NO;
+    UIBarButtonItem *logoItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_meituan_logo"] style:UIBarButtonItemStyleDone target:nil action:nil];
+    logoItem.enabled = NO;
     
     // 2.类别
-    MTHomeTopItem *categoryItem = [MTHomeTopItem item];
-    [categoryItem addTarget:self action:@selector(categoryClick)];
-    UIBarButtonItem *category = [[UIBarButtonItem alloc] initWithCustomView:categoryItem];
+    MTHomeTopItem *categoryTopItem = [MTHomeTopItem item];
+    [categoryTopItem addTarget:self action:@selector(categoryClick)];
+    UIBarButtonItem *categoryItem = [[UIBarButtonItem alloc] initWithCustomView:categoryTopItem];
+    self.categoryItem = categoryItem;
     
     // 3.地区
-    MTHomeTopItem *districtItem = [MTHomeTopItem item];
-    [districtItem addTarget:self action:@selector(districtClick)];
-    UIBarButtonItem *district = [[UIBarButtonItem alloc] initWithCustomView:districtItem];
+    MTHomeTopItem *districtTopItem = [MTHomeTopItem item];
+    [districtTopItem addTarget:self action:@selector(districtClick)];
+    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopItem];
+    self.districtItem = districtItem;
     
     // 4.排序
-    MTHomeTopItem *sortItem = [MTHomeTopItem item];
-    [sortItem addTarget:self action:@selector(sortClick)];
-    UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithCustomView:sortItem];
+    MTHomeTopItem *sortTopItem = [MTHomeTopItem item];
+    [sortTopItem addTarget:self action:@selector(sortClick)];
+    UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortTopItem];
+    self.sortItem = sortItem;
     
-    self.navigationItem.leftBarButtonItems = @[logo, category, district, sort];
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortItem];
 }
 
 - (void)setupRightNav
 {
-    UIBarButtonItem *map = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highImage:@"icon_map_highlighted"];
-    map.customView.width = 60;
+    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highImage:@"icon_map_highlighted"];
+    mapItem.customView.width = 60;
     
-    UIBarButtonItem *search = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highImage:@"icon_search_highlighted"];
-    search.customView.width = 60;
-    self.navigationItem.rightBarButtonItems = @[map, search];
+    UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_search" highImage:@"icon_search_highlighted"];
+    searchItem.customView.width = 60;
+    self.navigationItem.rightBarButtonItems = @[mapItem, searchItem];
 }
 
 #pragma mark - 顶部item点击方法
 - (void)categoryClick
 {
-    MTLog(@"categoryClick");
+    // 显示分类菜单
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
+    [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.popover = popover;
 }
 
 - (void)districtClick
