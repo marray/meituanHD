@@ -10,16 +10,36 @@
 #import "UIBarButtonItem+Extension.h"
 #import "MTCityGroup.h"
 #import "MJExtension.h"
-#import "Masonry.h"
+#import "MTConst.h"
+#import "UIView+AutoLayout.h"
+#import "MTCitySearchResultViewController.h"
 
 const int MTCoverTag = 999;
 
 @interface MTCityViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong) NSArray *cityGroups;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *cover;
+- (IBAction)coverClick;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, weak) MTCitySearchResultViewController *citySearchResult;
 @end
 
 @implementation MTCityViewController
+
+- (MTCitySearchResultViewController *)citySearchResult
+{
+    if (!_citySearchResult) {
+        MTCitySearchResultViewController *citySearchResult = [[MTCitySearchResultViewController alloc] init];
+        [self addChildViewController:citySearchResult];
+        self.citySearchResult = citySearchResult;
+        
+        [self.view addSubview:self.citySearchResult.view];
+        [self.citySearchResult.view autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeTop];
+        [self.citySearchResult.view autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.searchBar withOffset:15];
+    }
+    return _citySearchResult;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,6 +52,8 @@ const int MTCoverTag = 999;
     
     // 加载城市数据
     self.cityGroups = [MTCityGroup objectArrayWithFilename:@"cityGroups.plist"];
+    
+    self.searchBar.tintColor = MTColor(32, 191, 179);
 }
 
 - (void)close
@@ -48,22 +70,16 @@ const int MTCoverTag = 999;
     // 1.隐藏导航栏
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
-    // 2.显示遮盖
-    UIView *cover = [[UIView alloc] init];
-    cover.backgroundColor = [UIColor blackColor];
-    cover.alpha = 0.5;
-    cover.tag = MTCoverTag;
-    [cover addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:searchBar action:@selector(resignFirstResponder)]];
-    [self.view addSubview:cover];
-    [cover mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.tableView.mas_left);
-        make.right.equalTo(self.tableView.mas_right);
-        make.top.equalTo(self.tableView.mas_top);
-        make.bottom.equalTo(self.tableView.mas_bottom);
-    }];
-    
-    // 3.修改搜索框的背景图片
+    // 2.修改搜索框的背景图片
     [searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield_hl"]];
+    
+    // 3.显示搜索框右边的取消按钮
+    [searchBar setShowsCancelButton:YES animated:YES];
+    
+    // 4.显示遮盖
+    [UIView animateWithDuration:0.5 animations:^{
+        self.cover.alpha = 0.5;
+    }];
 }
 
 /**
@@ -74,11 +90,45 @@ const int MTCoverTag = 999;
     // 1.显示导航栏
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    // 2.隐藏遮盖
-    [[self.view viewWithTag:MTCoverTag] removeFromSuperview];
-    
-    // 3.修改搜索框的背景图片
+    // 2.修改搜索框的背景图片
     [searchBar setBackgroundImage:[UIImage imageNamed:@"bg_login_textfield"]];
+    
+    // 3.隐藏搜索框右边的取消按钮
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
+    // 4.隐藏遮盖
+    [UIView animateWithDuration:0.5 animations:^{
+        self.cover.alpha = 0.0;
+    }];
+    
+    // 5.移除搜索结果
+    self.citySearchResult.view.hidden = YES;
+    searchBar.text = nil;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+/**
+ *  搜索框里面的文字变化的时候调用
+ */
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    if (searchText.length) {
+        self.citySearchResult.view.hidden = NO;
+        self.citySearchResult.searchText = searchText;
+    } else {
+        self.citySearchResult.view.hidden = YES;
+    }
+}
+
+/**
+ *  点击遮盖
+ */
+- (IBAction)coverClick {
+    [self.searchBar resignFirstResponder];
 }
 
 #pragma mark - 数据源方法
@@ -116,11 +166,14 @@ const int MTCoverTag = 999;
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-//    NSMutableArray *titles = [NSMutableArray array];
-//    for (MTCityGroup *group in self.cityGroups) {
-//        [titles addObject:group.title];
-//    }
-//    return titles;
     return [self.cityGroups valueForKeyPath:@"title"];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MTCityGroup *group = self.cityGroups[indexPath.section];
+    // 发出通知
+    [MTNotificationCenter postNotificationName:MTCityDidChangeNotification object:nil userInfo:@{MTSelectCityName : group.cities[indexPath.row]}];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

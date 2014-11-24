@@ -8,11 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MTHomeDropdown">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="382"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="409"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4J8-6N-92a" userLabel="主表">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="382"/>
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="409"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="Vrx-fO-rBj"/>
@@ -20,7 +20,7 @@
                     </connections>
                 </tableView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JPn-Yf-F4q" userLabel="从表">
-                    <rect key="frame" x="200" y="0.0" width="200" height="382"/>
+                    <rect key="frame" x="200" y="0.0" width="200" height="409"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="Laf-nZ-sKb"/>
@@ -45,7 +45,7 @@
                 <outlet property="mainTableView" destination="4J8-6N-92a" id="OUa-Il-l12"/>
                 <outlet property="subTableView" destination="JPn-Yf-F4q" id="pva-V9-AET"/>
             </connections>
-            <point key="canvasLocation" x="444" y="295"/>
+            <point key="canvasLocation" x="364" y="309.5"/>
         </view>
     </objects>
 </document>

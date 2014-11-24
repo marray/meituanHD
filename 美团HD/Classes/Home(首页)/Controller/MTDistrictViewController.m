@@ -8,7 +8,6 @@
 
 #import "MTDistrictViewController.h"
 #import "MTHomeDropdown.h"
-#import "Masonry.h"
 #import "UIView+Extension.h"
 #import "MTCityViewController.h"
 #import "MTNavigationController.h"
@@ -40,5 +39,8 @@
     MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:city];
     nav.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:nav animated:YES completion:nil];
+    
+    // modal出来的是MTNavigationController
+    // dismiss掉的应该也是MTNavigationController
 }
 @end

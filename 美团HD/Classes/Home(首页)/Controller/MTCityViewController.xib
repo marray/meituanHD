@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTCityViewController">
             <connections>
+                <outlet property="cover" destination="Bd2-ub-wqF" id="ghG-nN-RjD"/>
+                <outlet property="searchBar" destination="KEe-U2-y8c" id="hLK-Py-wd2"/>
                 <outlet property="tableView" destination="mCB-vG-1No" id="d2B-pq-rQV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,11 +36,25 @@
                         <outlet property="delegate" destination="-1" id="PvJ-o8-KtY"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd2-ub-wqF" userLabel="遮盖">
+                    <rect key="frame" x="0.0" y="65" width="600" height="535"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="coverClick" destination="-1" eventType="touchUpInside" id="ayD-hd-qC7"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Bd2-ub-wqF" firstAttribute="top" secondItem="KEe-U2-y8c" secondAttribute="bottom" constant="15" id="1F7-6P-ld1"/>
                 <constraint firstItem="KEe-U2-y8c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="1HM-f8-LGA"/>
+                <constraint firstItem="Bd2-ub-wqF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fn8-3P-mdw"/>
                 <constraint firstAttribute="trailing" secondItem="KEe-U2-y8c" secondAttribute="trailing" constant="15" id="Gjm-vP-dBp"/>
+                <constraint firstAttribute="bottom" secondItem="Bd2-ub-wqF" secondAttribute="bottom" id="LgG-Ay-dDF"/>
+                <constraint firstAttribute="trailing" secondItem="Bd2-ub-wqF" secondAttribute="trailing" id="QGw-iN-6f1"/>
                 <constraint firstAttribute="bottom" secondItem="mCB-vG-1No" secondAttribute="bottom" id="kIK-W5-bXv"/>
                 <constraint firstItem="mCB-vG-1No" firstAttribute="top" secondItem="KEe-U2-y8c" secondAttribute="bottom" constant="15" id="m1H-qw-5yH"/>
                 <constraint firstItem="KEe-U2-y8c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="nEC-Rj-Hzy"/>
