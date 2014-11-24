@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MTHomeDropdown">
             <rect key="frame" x="0.0" y="0.0" width="400" height="382"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4J8-6N-92a" userLabel="主表">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="382"/>
@@ -30,14 +30,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="JPn-Yf-F4q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="11M-AI-V76"/>
-                <constraint firstAttribute="trailing" secondItem="JPn-Yf-F4q" secondAttribute="trailing" id="E77-Tb-5by"/>
-                <constraint firstItem="4J8-6N-92a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f5Y-TA-cQI"/>
-                <constraint firstAttribute="bottom" secondItem="JPn-Yf-F4q" secondAttribute="bottom" id="ova-Ej-8mX"/>
-                <constraint firstAttribute="bottom" secondItem="4J8-6N-92a" secondAttribute="bottom" id="pOX-VW-pPM"/>
-                <constraint firstItem="JPn-Yf-F4q" firstAttribute="leading" secondItem="4J8-6N-92a" secondAttribute="trailing" id="q6Q-MG-MuB"/>
-                <constraint firstItem="4J8-6N-92a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sFS-Kc-EtH"/>
-                <constraint firstItem="4J8-6N-92a" firstAttribute="width" secondItem="JPn-Yf-F4q" secondAttribute="width" id="vAQ-fC-NU1"/>
+                <constraint firstItem="JPn-Yf-F4q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Jjl-52-Owc"/>
+                <constraint firstItem="JPn-Yf-F4q" firstAttribute="leading" secondItem="4J8-6N-92a" secondAttribute="trailing" id="KB2-aN-QPi"/>
+                <constraint firstAttribute="bottom" secondItem="JPn-Yf-F4q" secondAttribute="bottom" id="Qa1-zD-Oip"/>
+                <constraint firstAttribute="bottom" secondItem="4J8-6N-92a" secondAttribute="bottom" id="c9w-X0-3K5"/>
+                <constraint firstItem="JPn-Yf-F4q" firstAttribute="width" secondItem="4J8-6N-92a" secondAttribute="width" id="dUc-1e-tB8"/>
+                <constraint firstItem="4J8-6N-92a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o7j-Jr-rV8"/>
+                <constraint firstAttribute="trailing" secondItem="JPn-Yf-F4q" secondAttribute="trailing" id="pjB-CE-mff"/>
+                <constraint firstItem="4J8-6N-92a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yqK-GH-Z3x"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -45,7 +45,7 @@
                 <outlet property="mainTableView" destination="4J8-6N-92a" id="OUa-Il-l12"/>
                 <outlet property="subTableView" destination="JPn-Yf-F4q" id="pva-V9-AET"/>
             </connections>
-            <point key="canvasLocation" x="581" y="311"/>
+            <point key="canvasLocation" x="444" y="295"/>
         </view>
     </objects>
 </document>

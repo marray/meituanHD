@@ -48,6 +48,13 @@
 		183761EA1A21C6FB00225E57 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761E01A21C6FB00225E57 /* View+MASAdditions.m */; };
 		183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761EC1A21CDC600225E57 /* MTHomeDropdownMainCell.m */; };
 		183761F01A21CDD800225E57 /* MTHomeDropdownSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761EF1A21CDD800225E57 /* MTHomeDropdownSubCell.m */; };
+		183761F71A21D3A700225E57 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761F51A21D3A700225E57 /* MTDistrictViewController.m */; };
+		183761F81A21D3A700225E57 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183761F61A21D3A700225E57 /* MTDistrictViewController.xib */; };
+		183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761FA1A21D7A500225E57 /* MTCityViewController.m */; };
+		183761FD1A21D7A500225E57 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183761FB1A21D7A500225E57 /* MTCityViewController.xib */; };
+		183762001A21DAED00225E57 /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761FF1A21DAED00225E57 /* MTCity.m */; };
+		183762031A21DB8C00225E57 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762021A21DB8C00225E57 /* MTRegion.m */; };
+		183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762051A21DD2A00225E57 /* MTCityGroup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +151,18 @@
 		183761EC1A21CDC600225E57 /* MTHomeDropdownMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownMainCell.m; sourceTree = "<group>"; };
 		183761EE1A21CDD800225E57 /* MTHomeDropdownSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdownSubCell.h; sourceTree = "<group>"; };
 		183761EF1A21CDD800225E57 /* MTHomeDropdownSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownSubCell.m; sourceTree = "<group>"; };
+		183761F41A21D3A700225E57 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
+		183761F51A21D3A700225E57 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
+		183761F61A21D3A700225E57 /* MTDistrictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDistrictViewController.xib; sourceTree = "<group>"; };
+		183761F91A21D7A500225E57 /* MTCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityViewController.h; sourceTree = "<group>"; };
+		183761FA1A21D7A500225E57 /* MTCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityViewController.m; sourceTree = "<group>"; };
+		183761FB1A21D7A500225E57 /* MTCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTCityViewController.xib; sourceTree = "<group>"; };
+		183761FE1A21DAED00225E57 /* MTCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCity.h; sourceTree = "<group>"; };
+		183761FF1A21DAED00225E57 /* MTCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCity.m; sourceTree = "<group>"; };
+		183762011A21DB8C00225E57 /* MTRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegion.h; sourceTree = "<group>"; };
+		183762021A21DB8C00225E57 /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
+		183762041A21DD2A00225E57 /* MTCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroup.h; sourceTree = "<group>"; };
+		183762051A21DD2A00225E57 /* MTCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +263,12 @@
 				183761611A218A1700225E57 /* MTHomeViewController.m */,
 				183761881A21B80100225E57 /* MTCategoryViewController.h */,
 				183761891A21B80100225E57 /* MTCategoryViewController.m */,
+				183761F41A21D3A700225E57 /* MTDistrictViewController.h */,
+				183761F51A21D3A700225E57 /* MTDistrictViewController.m */,
+				183761F61A21D3A700225E57 /* MTDistrictViewController.xib */,
+				183761F91A21D7A500225E57 /* MTCityViewController.h */,
+				183761FA1A21D7A500225E57 /* MTCityViewController.m */,
+				183761FB1A21D7A500225E57 /* MTCityViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +349,12 @@
 			children = (
 				1837619E1A21BB8F00225E57 /* MTCategory.h */,
 				1837619F1A21BB8F00225E57 /* MTCategory.m */,
+				183761FE1A21DAED00225E57 /* MTCity.h */,
+				183761FF1A21DAED00225E57 /* MTCity.m */,
+				183762011A21DB8C00225E57 /* MTRegion.h */,
+				183762021A21DB8C00225E57 /* MTRegion.m */,
+				183762041A21DD2A00225E57 /* MTCityGroup.h */,
+				183762051A21DD2A00225E57 /* MTCityGroup.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -478,9 +509,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183761FD1A21D7A500225E57 /* MTCityViewController.xib in Resources */,
 				183761991A21BAE700225E57 /* categories.plist in Resources */,
 				1837612F1A21722500225E57 /* Images.xcassets in Resources */,
 				1837619C1A21BAE700225E57 /* sorts.plist in Resources */,
+				183761F81A21D3A700225E57 /* MTDistrictViewController.xib in Resources */,
 				183761771A218A1700225E57 /* MTHomeTopItem.xib in Resources */,
 				1837619A1A21BAE700225E57 /* cities.plist in Resources */,
 				183761871A21B65A00225E57 /* MTHomeDropdown.xib in Resources */,
@@ -516,7 +549,10 @@
 				183761BF1A21BCAE00225E57 /* MJMethod.m in Sources */,
 				183761761A218A1700225E57 /* MTHomeTopItem.m in Sources */,
 				183761E31A21C6FB00225E57 /* MASConstraint.m in Sources */,
+				183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */,
+				183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */,
 				183761C41A21BCAE00225E57 /* NSObject+MJMember.m in Sources */,
+				183761F71A21D3A700225E57 /* MTDistrictViewController.m in Sources */,
 				183761C11A21BCAE00225E57 /* MJTypeEncoding.m in Sources */,
 				183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */,
 				183761861A21B65A00225E57 /* MTHomeDropdown.m in Sources */,
@@ -532,7 +568,9 @@
 				183761E91A21C6FB00225E57 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				183761E41A21C6FB00225E57 /* MASConstraintMaker.m in Sources */,
 				1837617A1A218A1700225E57 /* MTNavigationController.m in Sources */,
+				183762031A21DB8C00225E57 /* MTRegion.m in Sources */,
 				1837617D1A218A1700225E57 /* MTConst.m in Sources */,
+				183762001A21DAED00225E57 /* MTCity.m in Sources */,
 				183761A01A21BB8F00225E57 /* MTCategory.m in Sources */,
 				183761BB1A21BCAE00225E57 /* MJConst.m in Sources */,
 			);

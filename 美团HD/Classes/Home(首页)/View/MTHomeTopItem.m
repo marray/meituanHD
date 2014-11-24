@@ -19,6 +19,10 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"MTHomeTopItem" owner:nil options:nil] firstObject];
 }
 
+- (void)awakeFromNib
+{
+    self.autoresizingMask = UIViewAutoresizingNone;
+}
 
 - (void)addTarget:(id)target action:(SEL)action
 {

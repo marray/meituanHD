@@ -12,6 +12,7 @@
 #import "UIView+Extension.h"
 #import "MTHomeTopItem.h"
 #import "MTCategoryViewController.h"
+#import "MTDistrictViewController.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
@@ -20,8 +21,6 @@
 @property (nonatomic, weak) UIBarButtonItem *districtItem;
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
-
-@property (nonatomic, strong) UIPopoverController *popover;
 @end
 
 @implementation MTHomeViewController
@@ -94,12 +93,13 @@ static NSString * const reuseIdentifier = @"Cell";
     // 显示分类菜单
     UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
     [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    self.popover = popover;
 }
 
 - (void)districtClick
 {
-    MTLog(@"districtClick");
+    // 显示区域菜单
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTDistrictViewController alloc] init]];
+    [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)sortClick
