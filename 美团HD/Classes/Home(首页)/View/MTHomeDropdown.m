@@ -7,18 +7,14 @@
 //
 
 #import "MTHomeDropdown.h"
-#import "MTConst.h"
-//#import "MTCategory.h"
-#import "MTRegion.h"
 #import "MTHomeDropdownMainCell.h"
 #import "MTHomeDropdownSubCell.h"
 
 @interface MTHomeDropdown() <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (weak, nonatomic) IBOutlet UITableView *subTableView;
-
-//@property (nonatomic, strong) MTCategory *seledtedCategory;
-@property (nonatomic, strong) MTRegion *selectedRegion;
+/** 左边主表选中的行号 */
+@property (nonatomic, assign) NSInteger selectedMainRow;
 @end
 
 @implementation MTHomeDropdown
@@ -38,11 +34,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.mainTableView) {
-//        return self.categories.count;
-        return self.regions.count;
+        return [self.dataSource numberOfRowsInMainTable:self];
     } else {
-//        return self.selectedCategory.subcategories.count;
-        return self.selectedRegion.subregions.count;
+        return [self.dataSource homeDropdown:self subdataForRowInMainTable:self.selectedMainRow].count;
     }
 }
 
@@ -52,18 +46,16 @@
     if (tableView == self.mainTableView) {
         cell = [MTHomeDropdownMainCell cellWithTableView:tableView];
         
-        // 显示文字
-//        MTCategory *category = self.categories[indexPath.row];
-//        cell.textLabel.text = category.name;
-//        cell.imageView.image = [UIImage imageNamed:category.small_icon];
-//        if (category.subcategories.count) {
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        } else {
-//            cell.accessoryType = UITableViewCellAccessoryNone;
-//        }
-        MTRegion *region = self.regions[indexPath.row];
-        cell.textLabel.text = region.name;
-        if (region.subregions.count) {
+        // 取出模型数据
+        cell.textLabel.text = [self.dataSource homeDropdown:self titleForRowInMainTable:indexPath.row];
+        if ([self.dataSource respondsToSelector:@selector(homeDropdown:iconForRowInMainTable:)]) {
+            cell.imageView.image = [UIImage imageNamed:[self.dataSource homeDropdown:self iconForRowInMainTable:indexPath.row]];
+        }
+        if ([self.dataSource respondsToSelector:@selector(homeDropdown:selectedIconForRowInMainTable:)]) {
+            cell.imageView.highlightedImage = [UIImage imageNamed:[self.dataSource homeDropdown:self selectedIconForRowInMainTable:indexPath.row]];
+        }
+        NSArray *subdata = [self.dataSource homeDropdown:self subdataForRowInMainTable:indexPath.row];
+        if (subdata.count) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -71,8 +63,8 @@
     } else { // 从表
         cell = [MTHomeDropdownSubCell cellWithTableView:tableView];
         
-//        cell.textLabel.text = self.selectedCategory.subcategories[indexPath.row];
-        cell.textLabel.text = self.selectedRegion.subregions[indexPath.row];
+        NSArray *subdata = [self.dataSource homeDropdown:self subdataForRowInMainTable:self.selectedMainRow];
+        cell.textLabel.text = subdata[indexPath.row];
     }
     
     return cell;
@@ -82,13 +74,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.mainTableView) {
-        // 被点击的分类
-//        self.seledtedCategory = self.categories[indexPath.row];
-        self.selectedRegion = self.regions[indexPath.row];
+        // 被点击的数据
+        self.selectedMainRow = indexPath.row;
         // 刷新右边的数据
         [self.subTableView reloadData];
     }
 }
-
-
 @end

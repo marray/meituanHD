@@ -12,9 +12,17 @@
 
 /**
  *  返回344个城市
- *
- *  @return 所有的城市
  */
 + (NSArray *)cities;
+
+/**
+ *  返回所有的分类数据
+ */
++ (NSArray *)categories;
+
+/**
+ *  返回所有的排序数据
+ */
++ (NSArray *)sorts;
 
 @end

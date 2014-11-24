@@ -14,8 +14,9 @@
 #import "UIView+Extension.h"
 #import "MTCategory.h"
 #import "MJExtension.h"
+#import "MTMetaTool.h"
 
-@interface MTCategoryViewController ()
+@interface MTCategoryViewController () <MTHomeDropdownDataSource>
 @end
 
 @implementation MTCategoryViewController
@@ -23,8 +24,7 @@
 - (void)loadView
 {
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
-    // 加载分类数据
-//    dropdown.categories = [MTCategory objectArrayWithFilename:@"categories.plist"];
+    dropdown.dataSource = self;
     self.view = dropdown;
     
     // 设置控制器view在popover中的尺寸
@@ -34,6 +34,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+}
+
+#pragma mark - MTHomeDropdownDataSource
+- (NSInteger)numberOfRowsInMainTable:(MTHomeDropdown *)homeDropdown
+{
+    return [MTMetaTool categories].count;
+}
+
+- (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown titleForRowInMainTable:(int)row
+{
+    MTCategory *category = [MTMetaTool categories][row];
+    return category.name;
+}
+
+- (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown iconForRowInMainTable:(int)row
+{
+    MTCategory *category = [MTMetaTool categories][row];
+    return category.small_icon;
+}
+
+- (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown selectedIconForRowInMainTable:(int)row
+{
+    MTCategory *category = [MTMetaTool categories][row];
+    return category.small_highlighted_icon;
+}
+
+- (NSArray *)homeDropdown:(MTHomeDropdown *)homeDropdown subdataForRowInMainTable:(int)row
+{
+    MTCategory *category = [MTMetaTool categories][row];
+    return category.subcategories;
 }
 
 @end

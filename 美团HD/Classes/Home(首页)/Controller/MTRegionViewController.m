@@ -1,22 +1,23 @@
 //
-//  MTDistrictViewController.m
+//  MTRegionViewController.m
 //  美团HD
 //
 //  Created by apple on 14/11/23.
 //  Copyright (c) 2014年 heima. All rights reserved.
 //
 
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "MTHomeDropdown.h"
 #import "UIView+Extension.h"
 #import "MTCityViewController.h"
 #import "MTNavigationController.h"
+#import "MTRegion.h"
 
-@interface MTDistrictViewController ()
+@interface MTRegionViewController () <MTHomeDropdownDataSource>
 - (IBAction)changeCity;
 @end
 
-@implementation MTDistrictViewController
+@implementation MTRegionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +26,7 @@
     UIView *title = [self.view.subviews firstObject];
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     dropdown.y = title.height;
-    dropdown.regions = self.regions;
+    dropdown.dataSource = self;
     [self.view addSubview:dropdown];
     
     // 设置控制器在popover中的尺寸
@@ -43,5 +44,23 @@
     
     // modal出来的是MTNavigationController
     // dismiss掉的应该也是MTNavigationController
+}
+
+#pragma mark - MTHomeDropdownDataSource
+- (NSInteger)numberOfRowsInMainTable:(MTHomeDropdown *)homeDropdown
+{
+    return self.regions.count;
+}
+
+- (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown titleForRowInMainTable:(int)row
+{
+    MTRegion *region = self.regions[row];
+    return region.name;
+}
+
+- (NSArray *)homeDropdown:(MTHomeDropdown *)homeDropdown subdataForRowInMainTable:(int)row
+{
+    MTRegion *region = self.regions[row];
+    return region.subregions;
 }
 @end

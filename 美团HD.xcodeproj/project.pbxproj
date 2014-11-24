@@ -39,13 +39,15 @@
 		183761C41A21BCAE00225E57 /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761B91A21BCAE00225E57 /* NSObject+MJMember.m */; };
 		183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761EC1A21CDC600225E57 /* MTHomeDropdownMainCell.m */; };
 		183761F01A21CDD800225E57 /* MTHomeDropdownSubCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761EF1A21CDD800225E57 /* MTHomeDropdownSubCell.m */; };
-		183761F71A21D3A700225E57 /* MTDistrictViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761F51A21D3A700225E57 /* MTDistrictViewController.m */; };
-		183761F81A21D3A700225E57 /* MTDistrictViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183761F61A21D3A700225E57 /* MTDistrictViewController.xib */; };
+		183761F71A21D3A700225E57 /* MTRegionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761F51A21D3A700225E57 /* MTRegionViewController.m */; };
+		183761F81A21D3A700225E57 /* MTRegionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183761F61A21D3A700225E57 /* MTRegionViewController.xib */; };
 		183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761FA1A21D7A500225E57 /* MTCityViewController.m */; };
 		183761FD1A21D7A500225E57 /* MTCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183761FB1A21D7A500225E57 /* MTCityViewController.xib */; };
 		183762001A21DAED00225E57 /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761FF1A21DAED00225E57 /* MTCity.m */; };
 		183762031A21DB8C00225E57 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762021A21DB8C00225E57 /* MTRegion.m */; };
 		183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762051A21DD2A00225E57 /* MTCityGroup.m */; };
+		18710D501A230E0500C7CD5B /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D4F1A230E0500C7CD5B /* MTSort.m */; };
+		18710D531A230E9300C7CD5B /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D521A230E9300C7CD5B /* MTSortViewController.m */; };
 		18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */; };
 		18C88FEF1A22BE6F00913208 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */; };
 		18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FF21A22D74500913208 /* MTMetaTool.m */; };
@@ -122,9 +124,9 @@
 		183761EC1A21CDC600225E57 /* MTHomeDropdownMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownMainCell.m; sourceTree = "<group>"; };
 		183761EE1A21CDD800225E57 /* MTHomeDropdownSubCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHomeDropdownSubCell.h; sourceTree = "<group>"; };
 		183761EF1A21CDD800225E57 /* MTHomeDropdownSubCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHomeDropdownSubCell.m; sourceTree = "<group>"; };
-		183761F41A21D3A700225E57 /* MTDistrictViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDistrictViewController.h; sourceTree = "<group>"; };
-		183761F51A21D3A700225E57 /* MTDistrictViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDistrictViewController.m; sourceTree = "<group>"; };
-		183761F61A21D3A700225E57 /* MTDistrictViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDistrictViewController.xib; sourceTree = "<group>"; };
+		183761F41A21D3A700225E57 /* MTRegionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTRegionViewController.h; sourceTree = "<group>"; };
+		183761F51A21D3A700225E57 /* MTRegionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegionViewController.m; sourceTree = "<group>"; };
+		183761F61A21D3A700225E57 /* MTRegionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTRegionViewController.xib; sourceTree = "<group>"; };
 		183761F91A21D7A500225E57 /* MTCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityViewController.h; sourceTree = "<group>"; };
 		183761FA1A21D7A500225E57 /* MTCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityViewController.m; sourceTree = "<group>"; };
 		183761FB1A21D7A500225E57 /* MTCityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTCityViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +136,10 @@
 		183762021A21DB8C00225E57 /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
 		183762041A21DD2A00225E57 /* MTCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroup.h; sourceTree = "<group>"; };
 		183762051A21DD2A00225E57 /* MTCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroup.m; sourceTree = "<group>"; };
+		18710D4E1A230E0500C7CD5B /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
+		18710D4F1A230E0500C7CD5B /* MTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSort.m; sourceTree = "<group>"; };
+		18710D511A230E9300C7CD5B /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
+		18710D521A230E9300C7CD5B /* MTSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSortViewController.m; sourceTree = "<group>"; };
 		18C88FEA1A22BD3900913208 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
 		18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 		18C88FED1A22BE6F00913208 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
@@ -241,9 +247,11 @@
 				183761611A218A1700225E57 /* MTHomeViewController.m */,
 				183761881A21B80100225E57 /* MTCategoryViewController.h */,
 				183761891A21B80100225E57 /* MTCategoryViewController.m */,
-				183761F41A21D3A700225E57 /* MTDistrictViewController.h */,
-				183761F51A21D3A700225E57 /* MTDistrictViewController.m */,
-				183761F61A21D3A700225E57 /* MTDistrictViewController.xib */,
+				183761F41A21D3A700225E57 /* MTRegionViewController.h */,
+				183761F51A21D3A700225E57 /* MTRegionViewController.m */,
+				183761F61A21D3A700225E57 /* MTRegionViewController.xib */,
+				18710D511A230E9300C7CD5B /* MTSortViewController.h */,
+				18710D521A230E9300C7CD5B /* MTSortViewController.m */,
 				183761F91A21D7A500225E57 /* MTCityViewController.h */,
 				183761FA1A21D7A500225E57 /* MTCityViewController.m */,
 				183761FB1A21D7A500225E57 /* MTCityViewController.xib */,
@@ -337,6 +345,8 @@
 				183762021A21DB8C00225E57 /* MTRegion.m */,
 				183762041A21DD2A00225E57 /* MTCityGroup.h */,
 				183762051A21DD2A00225E57 /* MTCityGroup.m */,
+				18710D4E1A230E0500C7CD5B /* MTSort.h */,
+				18710D4F1A230E0500C7CD5B /* MTSort.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -473,7 +483,7 @@
 				183761991A21BAE700225E57 /* categories.plist in Resources */,
 				1837612F1A21722500225E57 /* Images.xcassets in Resources */,
 				1837619C1A21BAE700225E57 /* sorts.plist in Resources */,
-				183761F81A21D3A700225E57 /* MTDistrictViewController.xib in Resources */,
+				183761F81A21D3A700225E57 /* MTRegionViewController.xib in Resources */,
 				183761771A218A1700225E57 /* MTHomeTopItem.xib in Resources */,
 				1837619A1A21BAE700225E57 /* cities.plist in Resources */,
 				183761871A21B65A00225E57 /* MTHomeDropdown.xib in Resources */,
@@ -509,7 +519,8 @@
 				183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */,
 				183761C41A21BCAE00225E57 /* NSObject+MJMember.m in Sources */,
 				18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */,
-				183761F71A21D3A700225E57 /* MTDistrictViewController.m in Sources */,
+				183761F71A21D3A700225E57 /* MTRegionViewController.m in Sources */,
+				18710D531A230E9300C7CD5B /* MTSortViewController.m in Sources */,
 				183761C11A21BCAE00225E57 /* MJTypeEncoding.m in Sources */,
 				183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */,
 				183761861A21B65A00225E57 /* MTHomeDropdown.m in Sources */,
@@ -519,6 +530,7 @@
 				18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */,
 				183761C01A21BCAE00225E57 /* MJType.m in Sources */,
 				1837618A1A21B80100225E57 /* MTCategoryViewController.m in Sources */,
+				18710D501A230E0500C7CD5B /* MTSort.m in Sources */,
 				183761781A218A1700225E57 /* UIBarButtonItem+Extension.m in Sources */,
 				1837617C1A218A1700225E57 /* main.m in Sources */,
 				1837617A1A218A1700225E57 /* MTNavigationController.m in Sources */,

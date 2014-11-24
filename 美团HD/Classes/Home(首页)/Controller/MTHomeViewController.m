@@ -12,15 +12,16 @@
 #import "UIView+Extension.h"
 #import "MTHomeTopItem.h"
 #import "MTCategoryViewController.h"
-#import "MTDistrictViewController.h"
+#import "MTRegionViewController.h"
 #import "MTMetaTool.h"
 #import "MTCity.h"
+#import "MTSortViewController.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区item */
-@property (nonatomic, weak) UIBarButtonItem *districtItem;
+@property (nonatomic, weak) UIBarButtonItem *regionItem;
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
 
@@ -68,7 +69,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.selectedCityName = notification.userInfo[MTSelectCityName];
     
     // 1.更换顶部区域item的文字
-    MTHomeTopItem *topItem = (MTHomeTopItem *)self.districtItem.customView;
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.regionItem.customView;
     [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     [topItem setSubtitle:nil];
     
@@ -91,10 +92,10 @@ static NSString * const reuseIdentifier = @"Cell";
     self.categoryItem = categoryItem;
     
     // 3.地区
-    MTHomeTopItem *districtTopItem = [MTHomeTopItem item];
-    [districtTopItem addTarget:self action:@selector(districtClick)];
-    UIBarButtonItem *districtItem = [[UIBarButtonItem alloc] initWithCustomView:districtTopItem];
-    self.districtItem = districtItem;
+    MTHomeTopItem *regionTopItem = [MTHomeTopItem item];
+    [regionTopItem addTarget:self action:@selector(districtClick)];
+    UIBarButtonItem *regionItem = [[UIBarButtonItem alloc] initWithCustomView:regionTopItem];
+    self.regionItem = regionItem;
     
     // 4.排序
     MTHomeTopItem *sortTopItem = [MTHomeTopItem item];
@@ -102,7 +103,7 @@ static NSString * const reuseIdentifier = @"Cell";
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortTopItem];
     self.sortItem = sortItem;
     
-    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, districtItem, sortItem];
+    self.navigationItem.leftBarButtonItems = @[logoItem, categoryItem, regionItem, sortItem];
 }
 
 - (void)setupRightNav
@@ -125,21 +126,23 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)districtClick
 {
-    MTDistrictViewController *district = [[MTDistrictViewController alloc] init];
+    MTRegionViewController *region = [[MTRegionViewController alloc] init];
     if (self.selectedCityName) {
         // 获得当前选中城市
         MTCity *city = [[[MTMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];
-        district.regions = city.regions;
+        region.regions = city.regions;
     }
     
     // 显示区域菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:district];
-    [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:region];
+    [popover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)sortClick
 {
-    MTLog(@"sortClick");
+    // 显示排序菜单
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
+    [popover presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark <UICollectionViewDataSource>
