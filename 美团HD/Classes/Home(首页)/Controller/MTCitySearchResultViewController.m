@@ -9,31 +9,16 @@
 #import "MTCitySearchResultViewController.h"
 #import "MTConst.h"
 #import "MTCity.h"
-#import "MJExtension.h"
+#import "MTMetaTool.h"
 
 @interface MTCitySearchResultViewController ()
-@property (nonatomic, strong) NSArray *cities;
 @property (nonatomic, strong) NSArray *resultCities;
 @end
 
 @implementation MTCitySearchResultViewController
 
-- (NSArray *)cities
-{
-    if (!_cities) {
-        self.cities = [MTCity objectArrayWithFilename:@"cities.plist"];
-    }
-    return _cities;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)setSearchText:(NSString *)searchText
@@ -54,7 +39,7 @@
 //    }
     // 谓词\过滤器:能利用一定的条件从一个数组中过滤出想要的数据
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains %@ or pinYin contains %@ or pinYinHead contains %@", searchText, searchText, searchText];
-    self.resultCities = [self.cities filteredArrayUsingPredicate:predicate];
+    self.resultCities = [[MTMetaTool cities] filteredArrayUsingPredicate:predicate];
     
     [self.tableView reloadData];
 }

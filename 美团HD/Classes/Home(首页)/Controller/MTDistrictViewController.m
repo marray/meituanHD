@@ -25,6 +25,7 @@
     UIView *title = [self.view.subviews firstObject];
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     dropdown.y = title.height;
+    dropdown.regions = self.regions;
     [self.view addSubview:dropdown];
     
     // 设置控制器在popover中的尺寸

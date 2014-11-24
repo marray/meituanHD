@@ -13,6 +13,8 @@
 #import "MTHomeTopItem.h"
 #import "MTCategoryViewController.h"
 #import "MTDistrictViewController.h"
+#import "MTMetaTool.h"
+#import "MTCity.h"
 
 @interface MTHomeViewController ()
 /** 分类item */
@@ -21,6 +23,9 @@
 @property (nonatomic, weak) UIBarButtonItem *districtItem;
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
+
+/** 当前选中的城市 */
+@property (nonatomic, copy) NSString *selectedCityName;
 @end
 
 @implementation MTHomeViewController
@@ -60,11 +65,11 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark - 监听通知
 - (void)cityDidChange:(NSNotification *)notification
 {
-    NSString *cityName = notification.userInfo[MTSelectCityName];
+    self.selectedCityName = notification.userInfo[MTSelectCityName];
     
     // 1.更换顶部区域item的文字
     MTHomeTopItem *topItem = (MTHomeTopItem *)self.districtItem.customView;
-    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", cityName]];
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - 全部", self.selectedCityName]];
     [topItem setSubtitle:nil];
     
     // 2.刷新表格数据
@@ -120,8 +125,15 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)districtClick
 {
+    MTDistrictViewController *district = [[MTDistrictViewController alloc] init];
+    if (self.selectedCityName) {
+        // 获得当前选中城市
+        MTCity *city = [[[MTMetaTool cities] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name = %@", self.selectedCityName]] firstObject];
+        district.regions = city.regions;
+    }
+    
     // 显示区域菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTDistrictViewController alloc] init]];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:district];
     [popover presentPopoverFromBarButtonItem:self.districtItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 

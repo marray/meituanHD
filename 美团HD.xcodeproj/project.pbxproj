@@ -48,6 +48,7 @@
 		183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762051A21DD2A00225E57 /* MTCityGroup.m */; };
 		18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */; };
 		18C88FEF1A22BE6F00913208 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */; };
+		18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FF21A22D74500913208 /* MTMetaTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 		18C88FED1A22BE6F00913208 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
 		18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
+		18C88FF11A22D74500913208 /* MTMetaTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMetaTool.h; sourceTree = "<group>"; };
+		18C88FF21A22D74500913208 /* MTMetaTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMetaTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,7 @@
 		1837615E1A218A1700225E57 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				18C88FF01A22D72400913208 /* Tool */,
 				1837619D1A21BB8400225E57 /* Model */,
 				1837615F1A218A1700225E57 /* Controller */,
 				183761621A218A1700225E57 /* View */,
@@ -375,6 +379,15 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		18C88FF01A22D72400913208 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				18C88FF11A22D74500913208 /* MTMetaTool.h */,
+				18C88FF21A22D74500913208 /* MTMetaTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -495,6 +508,7 @@
 				183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */,
 				183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */,
 				183761C41A21BCAE00225E57 /* NSObject+MJMember.m in Sources */,
+				18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */,
 				183761F71A21D3A700225E57 /* MTDistrictViewController.m in Sources */,
 				183761C11A21BCAE00225E57 /* MJTypeEncoding.m in Sources */,
 				183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */,
