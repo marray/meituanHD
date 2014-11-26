@@ -15,9 +15,13 @@
 #import "MTRegionViewController.h"
 #import "MTMetaTool.h"
 #import "MTCity.h"
+#import "MTSort.h"
+#import "MTCategory.h"
 #import "MTSortViewController.h"
+#import "MTRegion.h"
+#import "DPAPI.h"
 
-@interface MTHomeViewController ()
+@interface MTHomeViewController () <DPRequestDelegate>
 /** 分类item */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区item */
@@ -25,8 +29,21 @@
 /** 排序item */
 @property (nonatomic, weak) UIBarButtonItem *sortItem;
 
-/** 当前选中的城市 */
+/** 当前选中的城市名字 */
 @property (nonatomic, copy) NSString *selectedCityName;
+/** 当前选中的分类名字 */
+@property (nonatomic, copy) NSString *selectedCategoryName;
+/** 当前选中的区域名字 */
+@property (nonatomic, copy) NSString *selectedRegionName;
+/** 当前选中的排序 */
+@property (nonatomic, strong) MTSort *selectedSort;
+
+/** 分类popover */
+@property (nonatomic, strong) UIPopoverController *categoryPopover;
+/** 区域popover */
+@property (nonatomic, strong) UIPopoverController *regionPopover;
+/** 排序popover */
+@property (nonatomic, strong) UIPopoverController *sortPopover;
 @end
 
 @implementation MTHomeViewController
@@ -52,6 +69,12 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
+    // 监听排序改变
+    [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
+    // 监听分类改变
+    [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
+    // 监听区域改变
+    [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
     
     // 设置导航栏内容
     [self setupLeftNav];
@@ -74,8 +97,111 @@ static NSString * const reuseIdentifier = @"Cell";
     [topItem setSubtitle:nil];
     
     // 2.刷新表格数据
-#warning TODO
+    [self loadNewDeals];
+}
+
+- (void)categoryDidChange:(NSNotification *)notification
+{
+    MTCategory *category = notification.userInfo[MTSelectCategory];
+    NSString *subcategoryName = notification.userInfo[MTSelectSubcategoryName];
     
+    if (subcategoryName == nil || [subcategoryName isEqualToString:@"全部"]) { // 点击的数据没有子分类
+        self.selectedCategoryName = category.name;
+    } else {
+        self.selectedCategoryName = subcategoryName;
+    }
+    if ([self.selectedCategoryName isEqualToString:@"全部分类"]) {
+        self.selectedCategoryName = nil;
+    }
+    
+    // 1.更换顶部item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.categoryItem.customView;
+    [topItem setIcon:category.icon highIcon:category.highlighted_icon];
+    [topItem setTitle:category.name];
+    [topItem setSubtitle:subcategoryName];
+    
+    // 2.关闭popover
+    [self.categoryPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+    [self loadNewDeals];
+}
+
+- (void)regionDidChange:(NSNotification *)notification
+{
+    MTRegion *region = notification.userInfo[MTSelectRegion];
+    NSString *subregionName = notification.userInfo[MTSelectSubregionName];
+    
+    if (subregionName == nil || [subregionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = region.name;
+    } else {
+        self.selectedRegionName = subregionName;
+    }
+    if ([self.selectedRegionName isEqualToString:@"全部"]) {
+        self.selectedRegionName = nil;
+    }
+    
+    // 1.更换顶部item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.regionItem.customView;
+    [topItem setTitle:[NSString stringWithFormat:@"%@ - %@", self.selectedCityName, region.name]];
+    [topItem setSubtitle:subregionName];
+    
+    // 2.关闭popover
+    [self.regionPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+    [self loadNewDeals];
+}
+
+- (void)sortDidChange:(NSNotification *)notification
+{
+    self.selectedSort = notification.userInfo[MTSelectSort];
+    
+    // 1.更换顶部排序item的文字
+    MTHomeTopItem *topItem = (MTHomeTopItem *)self.sortItem.customView;
+    [topItem setSubtitle:self.selectedSort.label];
+    
+    // 2.关闭popover
+    [self.sortPopover dismissPopoverAnimated:YES];
+    
+    // 3.刷新表格数据
+    [self loadNewDeals];
+}
+
+#pragma mark - 跟服务器交互
+- (void)loadNewDeals
+{
+    DPAPI *api = [[DPAPI alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    // 城市
+    params[@"city"] = self.selectedCityName;
+    // 每页的条数
+    params[@"limit"] = @5;
+    // 分类(类别)
+    if (self.selectedCategoryName) {
+        params[@"category"] = self.selectedCategoryName;
+    }
+    // 区域
+    if (self.selectedRegionName) {
+        params[@"region"] = self.selectedRegionName;
+    }
+    // 排序
+    if (self.selectedSort) {
+        params[@"sort"] = @(self.selectedSort.value);
+    }
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    MTLog(@"请求参数:%@", params);
+}
+
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    MTLog(@"请求成功--%@", result);
+}
+
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
+{
+    MTLog(@"请求失败--%@", error);
 }
 
 #pragma mark - 设置导航栏内容
@@ -99,6 +225,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // 4.排序
     MTHomeTopItem *sortTopItem = [MTHomeTopItem item];
+    [sortTopItem setTitle:@"排序"];
+    [sortTopItem setIcon:@"icon_sort" highIcon:@"icon_sort_highlighted"];
     [sortTopItem addTarget:self action:@selector(sortClick)];
     UIBarButtonItem *sortItem = [[UIBarButtonItem alloc] initWithCustomView:sortTopItem];
     self.sortItem = sortItem;
@@ -120,8 +248,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)categoryClick
 {
     // 显示分类菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
-    [popover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.categoryPopover = [[UIPopoverController alloc] initWithContentViewController:[[MTCategoryViewController alloc] init]];
+    [self.categoryPopover presentPopoverFromBarButtonItem:self.categoryItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)districtClick
@@ -134,15 +262,17 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     
     // 显示区域菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:region];
-    [popover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.regionPopover = [[UIPopoverController alloc] initWithContentViewController:region];
+    [self.regionPopover presentPopoverFromBarButtonItem:self.regionItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    region.popover = self.regionPopover;
 }
 
 - (void)sortClick
 {
     // 显示排序菜单
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
-    [popover presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    self.sortPopover = [[UIPopoverController alloc] initWithContentViewController:[[MTSortViewController alloc] init]];
+    [self.sortPopover presentPopoverFromBarButtonItem:self.sortItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -166,33 +296,5 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark <UICollectionViewDelegate>
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

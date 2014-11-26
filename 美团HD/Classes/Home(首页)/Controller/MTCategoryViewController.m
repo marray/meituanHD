@@ -15,8 +15,9 @@
 #import "MTCategory.h"
 #import "MJExtension.h"
 #import "MTMetaTool.h"
+#import "MTConst.h"
 
-@interface MTCategoryViewController () <MTHomeDropdownDataSource>
+@interface MTCategoryViewController () <MTHomeDropdownDataSource, MTHomeDropdownDelegate>
 @end
 
 @implementation MTCategoryViewController
@@ -25,6 +26,7 @@
 {
     MTHomeDropdown *dropdown = [MTHomeDropdown dropdown];
     dropdown.dataSource = self;
+    dropdown.delegate = self;
     self.view = dropdown;
     
     // 设置控制器view在popover中的尺寸
@@ -66,4 +68,20 @@
     return category.subcategories;
 }
 
+#pragma mark - MTHomeDropdownDelegate
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInMainTable:(int)row
+{
+    MTCategory *category = [MTMetaTool categories][row];
+    if (category.subcategories.count == 0) {
+        // 发出通知
+        [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category}];
+    }
+}
+
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInSubTable:(int)subrow inMainTable:(int)mainRow
+{
+    MTCategory *category = [MTMetaTool categories][mainRow];
+    // 发出通知
+    [MTNotificationCenter postNotificationName:MTCategoryDidChangeNotification object:nil userInfo:@{MTSelectCategory : category, MTSelectSubcategoryName : category.subcategories[subrow]}];
+}
 @end

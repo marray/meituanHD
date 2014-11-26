@@ -39,7 +39,15 @@
 - (NSString *)homeDropdown:(MTHomeDropdown *)homeDropdown selectedIconForRowInMainTable:(int)row;
 @end
 
+@protocol MTHomeDropdownDelegate <NSObject>
+
+@optional
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInMainTable:(int)row;
+- (void)homeDropdown:(MTHomeDropdown *)homeDropdown didSelectRowInSubTable:(int)subrow inMainTable:(int)mainRow;
+@end
+
 @interface MTHomeDropdown : UIView
 + (instancetype)dropdown;
 @property (nonatomic, weak) id<MTHomeDropdownDataSource> dataSource;
+@property (nonatomic, weak) id<MTHomeDropdownDelegate> delegate;
 @end

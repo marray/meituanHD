@@ -48,6 +48,9 @@
 		183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762051A21DD2A00225E57 /* MTCityGroup.m */; };
 		18710D501A230E0500C7CD5B /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D4F1A230E0500C7CD5B /* MTSort.m */; };
 		18710D531A230E9300C7CD5B /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D521A230E9300C7CD5B /* MTSortViewController.m */; };
+		18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D561A232C4500C7CD5B /* DPAPI.m */; };
+		18710D5B1A232C4500C7CD5B /* DPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D591A232C4500C7CD5B /* DPRequest.m */; };
+		18710D5D1A232F9100C7CD5B /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D5C1A232F9100C7CD5B /* Foundation+Log.m */; };
 		18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */; };
 		18C88FEF1A22BE6F00913208 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */; };
 		18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FF21A22D74500913208 /* MTMetaTool.m */; };
@@ -140,6 +143,12 @@
 		18710D4F1A230E0500C7CD5B /* MTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSort.m; sourceTree = "<group>"; };
 		18710D511A230E9300C7CD5B /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
 		18710D521A230E9300C7CD5B /* MTSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSortViewController.m; sourceTree = "<group>"; };
+		18710D551A232C4500C7CD5B /* DPAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPAPI.h; sourceTree = "<group>"; };
+		18710D561A232C4500C7CD5B /* DPAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPAPI.m; sourceTree = "<group>"; };
+		18710D571A232C4500C7CD5B /* DPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPConstants.h; sourceTree = "<group>"; };
+		18710D581A232C4500C7CD5B /* DPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRequest.h; sourceTree = "<group>"; };
+		18710D591A232C4500C7CD5B /* DPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRequest.m; sourceTree = "<group>"; };
+		18710D5C1A232F9100C7CD5B /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		18C88FEA1A22BD3900913208 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
 		18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 		18C88FED1A22BE6F00913208 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
@@ -292,6 +301,7 @@
 		183761671A218A1700225E57 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				18710D5C1A232F9100C7CD5B /* Foundation+Log.m */,
 				18C88FED1A22BE6F00913208 /* UIView+AutoLayout.h */,
 				18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */,
 				183761681A218A1700225E57 /* UIBarButtonItem+Extension.h */,
@@ -354,6 +364,7 @@
 		183761A11A21BCAE00225E57 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				18710D541A232C4500C7CD5B /* dianpingapi */,
 				183761A21A21BCAE00225E57 /* MJExtension */,
 			);
 			path = Lib;
@@ -387,6 +398,18 @@
 				183761B91A21BCAE00225E57 /* NSObject+MJMember.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		18710D541A232C4500C7CD5B /* dianpingapi */ = {
+			isa = PBXGroup;
+			children = (
+				18710D551A232C4500C7CD5B /* DPAPI.h */,
+				18710D561A232C4500C7CD5B /* DPAPI.m */,
+				18710D571A232C4500C7CD5B /* DPConstants.h */,
+				18710D581A232C4500C7CD5B /* DPRequest.h */,
+				18710D591A232C4500C7CD5B /* DPRequest.m */,
+			);
+			path = dianpingapi;
 			sourceTree = "<group>";
 		};
 		18C88FF01A22D72400913208 /* Tool */ = {
@@ -525,6 +548,7 @@
 				183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */,
 				183761861A21B65A00225E57 /* MTHomeDropdown.m in Sources */,
 				183761C31A21BCAE00225E57 /* NSObject+MJKeyValue.m in Sources */,
+				18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */,
 				1837617B1A218A1700225E57 /* AppDelegate.m in Sources */,
 				183761791A218A1700225E57 /* UIView+Extension.m in Sources */,
 				18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */,
@@ -535,6 +559,8 @@
 				1837617C1A218A1700225E57 /* main.m in Sources */,
 				1837617A1A218A1700225E57 /* MTNavigationController.m in Sources */,
 				183762031A21DB8C00225E57 /* MTRegion.m in Sources */,
+				18710D5D1A232F9100C7CD5B /* Foundation+Log.m in Sources */,
+				18710D5B1A232C4500C7CD5B /* DPRequest.m in Sources */,
 				1837617D1A218A1700225E57 /* MTConst.m in Sources */,
 				183762001A21DAED00225E57 /* MTCity.m in Sources */,
 				183761A01A21BB8F00225E57 /* MTCategory.m in Sources */,

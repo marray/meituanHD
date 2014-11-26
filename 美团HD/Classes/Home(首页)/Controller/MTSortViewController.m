@@ -12,6 +12,30 @@
 #import "UIView+Extension.h"
 #import "MTConst.h"
 
+@interface MTSortButton : UIButton
+@property (nonatomic, strong) MTSort *sort;
+@end
+
+@implementation MTSortButton
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if(self = [super initWithFrame:frame]) {
+        [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+        [self setBackgroundImage:[UIImage imageNamed:@"btn_filter_normal"] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageNamed:@"btn_filter_selected"] forState:UIControlStateHighlighted];
+    }
+    return self;
+}
+
+- (void)setSort:(MTSort *)sort
+{
+    _sort = sort;
+    
+    [self setTitle:sort.label forState:UIControlStateNormal];
+}
+@end
+
 @interface MTSortViewController ()
 
 @end
@@ -30,18 +54,13 @@
     CGFloat btnMargin = 15;
     CGFloat height = 0;
     for (NSUInteger i = 0; i<count; i++) {
-        MTSort *sort = sorts[i];
-        
-        UIButton *button = [[UIButton alloc] init];
+        MTSortButton *button = [[MTSortButton alloc] init];
+        // 传递模型
+        button.sort = sorts[i];
         button.width = btnW;
         button.height = btnH;
         button.x = btnX;
         button.y = btnStartY + i * (btnH + btnMargin);
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        [button setTitle:sort.label forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"btn_filter_normal"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"btn_filter_selected"] forState:UIControlStateHighlighted];
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = i;
         [self.view addSubview:button];
@@ -55,9 +74,9 @@
     self.preferredContentSize = CGSizeMake(width, height);
 }
 
-- (void)buttonClick:(UIButton *)button
+- (void)buttonClick:(MTSortButton *)button
 {
-    [MTNotificationCenter postNotificationName:MTSortDidChangeNotification object:nil userInfo:@{MTSelectSort : [MTMetaTool sorts][button.tag]}];
+    [MTNotificationCenter postNotificationName:MTSortDidChangeNotification object:nil userInfo:@{MTSelectSort : button.sort}];
 }
 
 @end
