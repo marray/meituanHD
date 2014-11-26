@@ -20,6 +20,9 @@
 #import "MTSortViewController.h"
 #import "MTRegion.h"
 #import "DPAPI.h"
+#import "MTDeal.h"
+#import "MTDealCell.h"
+#import "MJExtension.h"
 
 @interface MTHomeViewController () <DPRequestDelegate>
 /** 分类item */
@@ -44,15 +47,28 @@
 @property (nonatomic, strong) UIPopoverController *regionPopover;
 /** 排序popover */
 @property (nonatomic, strong) UIPopoverController *sortPopover;
+
+/** 所有的团购数据 */
+@property (nonatomic, strong) NSMutableArray *deals;
 @end
 
 @implementation MTHomeViewController
 
-static NSString * const reuseIdentifier = @"Cell";
+- (NSMutableArray *)deals
+{
+    if (!_deals) {
+        self.deals = [[NSMutableArray alloc] init];
+    }
+    return _deals;
+}
+
+static NSString * const reuseIdentifier = @"deal";
 
 - (instancetype)init
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    // cell的大小
+    layout.itemSize = CGSizeMake(305, 305);
     return [self initWithCollectionViewLayout:layout];
 }
 
@@ -65,7 +81,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.backgroundColor = MTGlobalBg;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"MTDealCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
@@ -196,7 +212,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
-    MTLog(@"请求成功--%@", result);
+    MTLog(@"%@", result);
+    // 1.取出团购的字典数组
+    NSArray *newDeals = [MTDeal objectArrayWithKeyValuesArray:result[@"deals"]];
+    [self.deals removeAllObjects];
+    [self.deals addObjectsFromArray:newDeals];
+    
+    // 2.刷新表格
+    [self.collectionView reloadData];
 }
 
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
@@ -277,20 +300,17 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete method implementation -- Return the number of sections
-    return 0;
+    return 1;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete method implementation -- Return the number of items in the section
-    return 0;
+    return self.deals.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    MTDealCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell
+    cell.deal = self.deals[indexPath.item];
     
     return cell;
 }
