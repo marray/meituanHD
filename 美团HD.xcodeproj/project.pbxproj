@@ -74,6 +74,14 @@
 		18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */; };
 		18C88FEF1A22BE6F00913208 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */; };
 		18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FF21A22D74500913208 /* MTMetaTool.m */; };
+		18F44E071A257E8800FFAFFB /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18F44DF71A257E8800FFAFFB /* MJRefresh.bundle */; };
+		18F44E081A257E8800FFAFFB /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44DFA1A257E8800FFAFFB /* MJRefreshBaseView.m */; };
+		18F44E091A257E8800FFAFFB /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44DFC1A257E8800FFAFFB /* MJRefreshConst.m */; };
+		18F44E0A1A257E8800FFAFFB /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44DFE1A257E8800FFAFFB /* MJRefreshFooterView.m */; };
+		18F44E0B1A257E8800FFAFFB /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44E001A257E8800FFAFFB /* MJRefreshHeaderView.m */; };
+		18F44E0C1A257E8800FFAFFB /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44E021A257E8800FFAFFB /* UIScrollView+MJExtension.m */; };
+		18F44E0D1A257E8800FFAFFB /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44E041A257E8800FFAFFB /* UIScrollView+MJRefresh.m */; };
+		18F44E0E1A257E8800FFAFFB /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F44E061A257E8800FFAFFB /* UIView+MJExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -215,6 +223,22 @@
 		18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		18C88FF11A22D74500913208 /* MTMetaTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMetaTool.h; sourceTree = "<group>"; };
 		18C88FF21A22D74500913208 /* MTMetaTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMetaTool.m; sourceTree = "<group>"; };
+		18F44DF71A257E8800FFAFFB /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		18F44DF81A257E8800FFAFFB /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		18F44DF91A257E8800FFAFFB /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		18F44DFA1A257E8800FFAFFB /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		18F44DFB1A257E8800FFAFFB /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		18F44DFC1A257E8800FFAFFB /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		18F44DFD1A257E8800FFAFFB /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		18F44DFE1A257E8800FFAFFB /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		18F44DFF1A257E8800FFAFFB /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		18F44E001A257E8800FFAFFB /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		18F44E011A257E8800FFAFFB /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		18F44E021A257E8800FFAFFB /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		18F44E031A257E8800FFAFFB /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		18F44E041A257E8800FFAFFB /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		18F44E051A257E8800FFAFFB /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		18F44E061A257E8800FFAFFB /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -471,6 +495,7 @@
 		183761A11A21BCAE00225E57 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				18F44DF61A257E8800FFAFFB /* MJRefresh */,
 				183474131A2562FF00EDBF75 /* SDWebImage */,
 				18710D541A232C4500C7CD5B /* dianpingapi */,
 				183761A21A21BCAE00225E57 /* MJExtension */,
@@ -527,6 +552,29 @@
 				18C88FF21A22D74500913208 /* MTMetaTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		18F44DF61A257E8800FFAFFB /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				18F44DF71A257E8800FFAFFB /* MJRefresh.bundle */,
+				18F44DF81A257E8800FFAFFB /* MJRefresh.h */,
+				18F44DF91A257E8800FFAFFB /* MJRefreshBaseView.h */,
+				18F44DFA1A257E8800FFAFFB /* MJRefreshBaseView.m */,
+				18F44DFB1A257E8800FFAFFB /* MJRefreshConst.h */,
+				18F44DFC1A257E8800FFAFFB /* MJRefreshConst.m */,
+				18F44DFD1A257E8800FFAFFB /* MJRefreshFooterView.h */,
+				18F44DFE1A257E8800FFAFFB /* MJRefreshFooterView.m */,
+				18F44DFF1A257E8800FFAFFB /* MJRefreshHeaderView.h */,
+				18F44E001A257E8800FFAFFB /* MJRefreshHeaderView.m */,
+				18F44E011A257E8800FFAFFB /* UIScrollView+MJExtension.h */,
+				18F44E021A257E8800FFAFFB /* UIScrollView+MJExtension.m */,
+				18F44E031A257E8800FFAFFB /* UIScrollView+MJRefresh.h */,
+				18F44E041A257E8800FFAFFB /* UIScrollView+MJRefresh.m */,
+				18F44E051A257E8800FFAFFB /* UIView+MJExtension.h */,
+				18F44E061A257E8800FFAFFB /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,6 +665,7 @@
 				1837619C1A21BAE700225E57 /* sorts.plist in Resources */,
 				183761F81A21D3A700225E57 /* MTRegionViewController.xib in Resources */,
 				183761771A218A1700225E57 /* MTHomeTopItem.xib in Resources */,
+				18F44E071A257E8800FFAFFB /* MJRefresh.bundle in Resources */,
 				1837619A1A21BAE700225E57 /* cities.plist in Resources */,
 				183761871A21B65A00225E57 /* MTHomeDropdown.xib in Resources */,
 				1837619B1A21BAE700225E57 /* cityGroups.plist in Resources */,
@@ -643,6 +692,8 @@
 				183761BC1A21BCAE00225E57 /* MJFoundation.m in Sources */,
 				183761BA1A21BCAE00225E57 /* MJArgument.m in Sources */,
 				183474421A2562FF00EDBF75 /* UIImageView+HighlightedWebCache.m in Sources */,
+				18F44E0B1A257E8800FFAFFB /* MJRefreshHeaderView.m in Sources */,
+				18F44E081A257E8800FFAFFB /* MJRefreshBaseView.m in Sources */,
 				183761F01A21CDD800225E57 /* MTHomeDropdownSubCell.m in Sources */,
 				183474361A2562FF00EDBF75 /* NSData+ImageContentType.m in Sources */,
 				183761C21A21BCAE00225E57 /* NSObject+MJCoding.m in Sources */,
@@ -654,8 +705,10 @@
 				183474381A2562FF00EDBF75 /* SDWebImageCompat.m in Sources */,
 				1834743C1A2562FF00EDBF75 /* SDWebImageManager.m in Sources */,
 				183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */,
+				18F44E0A1A257E8800FFAFFB /* MJRefreshFooterView.m in Sources */,
 				183474371A2562FF00EDBF75 /* SDImageCache.m in Sources */,
 				183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */,
+				18F44E091A257E8800FFAFFB /* MJRefreshConst.m in Sources */,
 				183474391A2562FF00EDBF75 /* SDWebImageDecoder.m in Sources */,
 				183761C41A21BCAE00225E57 /* NSObject+MJMember.m in Sources */,
 				18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */,
@@ -664,9 +717,11 @@
 				18710D531A230E9300C7CD5B /* MTSortViewController.m in Sources */,
 				183761C11A21BCAE00225E57 /* MJTypeEncoding.m in Sources */,
 				183474401A2562FF00EDBF75 /* UIImage+MultiFormat.m in Sources */,
+				18F44E0E1A257E8800FFAFFB /* UIView+MJExtension.m in Sources */,
 				183761ED1A21CDC600225E57 /* MTHomeDropdownMainCell.m in Sources */,
 				183474411A2562FF00EDBF75 /* UIImage+WebP.m in Sources */,
 				183761861A21B65A00225E57 /* MTHomeDropdown.m in Sources */,
+				18F44E0D1A257E8800FFAFFB /* UIScrollView+MJRefresh.m in Sources */,
 				183474111A255EF700EDBF75 /* MTDealCell.m in Sources */,
 				183761C31A21BCAE00225E57 /* NSObject+MJKeyValue.m in Sources */,
 				18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */,
@@ -683,6 +738,7 @@
 				1837617C1A218A1700225E57 /* main.m in Sources */,
 				1837617A1A218A1700225E57 /* MTNavigationController.m in Sources */,
 				183762031A21DB8C00225E57 /* MTRegion.m in Sources */,
+				18F44E0C1A257E8800FFAFFB /* UIScrollView+MJExtension.m in Sources */,
 				183474351A2562FF00EDBF75 /* MKAnnotationView+WebCache.m in Sources */,
 				18710D5D1A232F9100C7CD5B /* Foundation+Log.m in Sources */,
 				183474471A256D3100EDBF75 /* MTCenterLineLabel.m in Sources */,
@@ -799,7 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "美团HD/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -811,7 +867,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "美团HD/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
