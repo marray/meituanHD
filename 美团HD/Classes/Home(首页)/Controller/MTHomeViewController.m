@@ -26,8 +26,11 @@
 #import "MTSearchViewController.h"
 #import "MTNavigationController.h"
 #import "MJRefresh.h"
+#import "AwesomeMenu.h"
+#import "MTCollectViewController.h"
+#import "MTRecentViewController.h"
 
-@interface MTHomeViewController () 
+@interface MTHomeViewController () <AwesomeMenuDelegate>
 /** 分类item */
 @property (nonatomic, weak) UIBarButtonItem *categoryItem;
 /** 地区item */
@@ -57,6 +60,53 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupNotifications];
+    
+    // 设置导航栏内容
+    [self setupLeftNav];
+    [self setupRightNav];
+    
+    // 创建awesomemenu
+    [self setupAwesomeMenu];
+}
+
+- (void)dealloc
+{
+    [MTNotificationCenter removeObserver:self];
+}
+
+- (void)setupAwesomeMenu
+{
+    // 1.中间的item
+    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"icon_pathMenu_background_highlighted"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_mainMine_normal"] highlightedContentImage:nil];
+    
+    // 2.周边的item
+    AwesomeMenuItem *item0 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    AwesomeMenuItem *item1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    AwesomeMenuItem *item2 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    AwesomeMenuItem *item3 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg_pathMenu_black_normal"] highlightedImage:nil ContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_normal"] highlightedContentImage:[UIImage imageNamed:@"icon_pathMenu_collect_highlighted"]];
+    
+    NSArray *items = @[item0, item1, item2, item3];
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:CGRectZero startItem:startItem optionMenus:items];
+    menu.alpha = 0.5;
+    // 设置菜单的活动范围
+    menu.menuWholeAngle = M_PI_2;
+    // 设置开始按钮的位置
+    menu.startPoint = CGPointMake(50, 150);
+    // 设置代理
+    menu.delegate = self;
+    // 不要旋转中间按钮
+    menu.rotateAddButton = NO;
+    [self.view addSubview:menu];
+    
+    // 设置菜单永远在左下角
+    [menu autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
+    [menu autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
+    [menu autoSetDimensionsToSize:CGSizeMake(200, 200)];
+}
+
+- (void)setupNotifications
+{
     // 监听城市改变
     [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
     // 监听排序改变
@@ -65,15 +115,48 @@
     [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
     // 监听区域改变
     [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
-    
-    // 设置导航栏内容
-    [self setupLeftNav];
-    [self setupRightNav];
 }
 
-- (void)dealloc
+#pragma mark - AwesomeMenuDelegate
+- (void)awesomeMenuWillAnimateOpen:(AwesomeMenu *)menu
 {
-    [MTNotificationCenter removeObserver:self];
+    // 替换菜单的图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_cross_normal"];
+    
+    // 完全显示
+    menu.alpha = 1.0;
+}
+
+- (void)awesomeMenuWillAnimateClose:(AwesomeMenu *)menu
+{
+    // 替换菜单的图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_mainMine_normal"];
+    
+    // 半透明显示
+    menu.alpha = 0.5;
+}
+
+- (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
+{
+    // 替换菜单的图片
+    menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_mainMine_normal"];
+    
+    switch (idx) {
+        case 0: { // 收藏
+            MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTCollectViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+            
+        case 1: { // 最近访问记录
+            MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTRecentViewController alloc] init]];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - 监听通知
