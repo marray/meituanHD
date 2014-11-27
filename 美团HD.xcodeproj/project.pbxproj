@@ -71,6 +71,9 @@
 		18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D561A232C4500C7CD5B /* DPAPI.m */; };
 		18710D5B1A232C4500C7CD5B /* DPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D591A232C4500C7CD5B /* DPRequest.m */; };
 		18710D5D1A232F9100C7CD5B /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D5C1A232F9100C7CD5B /* Foundation+Log.m */; };
+		1884C63D1A26AE7900D79E8A /* MTDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1884C63B1A26AE7900D79E8A /* MTDetailViewController.m */; };
+		1884C63E1A26AE7900D79E8A /* MTDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1884C63C1A26AE7900D79E8A /* MTDetailViewController.xib */; };
+		1884C6401A26BE4400D79E8A /* detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 1884C63F1A26BE4400D79E8A /* detail.html */; };
 		18C88FEC1A22BD3900913208 /* MTCitySearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */; };
 		18C88FEF1A22BE6F00913208 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FEE1A22BE6F00913208 /* UIView+AutoLayout.m */; };
 		18C88FF31A22D74500913208 /* MTMetaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C88FF21A22D74500913208 /* MTMetaTool.m */; };
@@ -226,6 +229,10 @@
 		18710D581A232C4500C7CD5B /* DPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPRequest.h; sourceTree = "<group>"; };
 		18710D591A232C4500C7CD5B /* DPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPRequest.m; sourceTree = "<group>"; };
 		18710D5C1A232F9100C7CD5B /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		1884C63A1A26AE7900D79E8A /* MTDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDetailViewController.h; sourceTree = "<group>"; };
+		1884C63B1A26AE7900D79E8A /* MTDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDetailViewController.m; sourceTree = "<group>"; };
+		1884C63C1A26AE7900D79E8A /* MTDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTDetailViewController.xib; sourceTree = "<group>"; };
+		1884C63F1A26BE4400D79E8A /* detail.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = detail.html; sourceTree = "<group>"; };
 		18C88FEA1A22BD3900913208 /* MTCitySearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCitySearchResultViewController.h; sourceTree = "<group>"; };
 		18C88FEB1A22BD3900913208 /* MTCitySearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCitySearchResultViewController.m; sourceTree = "<group>"; };
 		18C88FED1A22BE6F00913208 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoLayout.h"; sourceTree = "<group>"; };
@@ -358,6 +365,7 @@
 				183761941A21BAE700225E57 /* Plist */,
 				1837612E1A21722500225E57 /* Images.xcassets */,
 				183761221A21722500225E57 /* Info.plist */,
+				1884C63F1A26BE4400D79E8A /* detail.html */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -382,6 +390,7 @@
 		1837615D1A218A1700225E57 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1884C6381A26ADE600D79E8A /* Detail(详情) */,
 				18F44E271A25D55500FFAFFB /* Collect(收藏) */,
 				18F44E291A25D55500FFAFFB /* Recent(最近) */,
 				18F44E181A25B62A00FFAFFB /* Search(搜索) */,
@@ -578,6 +587,24 @@
 			path = dianpingapi;
 			sourceTree = "<group>";
 		};
+		1884C6381A26ADE600D79E8A /* Detail(详情) */ = {
+			isa = PBXGroup;
+			children = (
+				1884C6391A26ADE600D79E8A /* Controller */,
+			);
+			path = "Detail(详情)";
+			sourceTree = "<group>";
+		};
+		1884C6391A26ADE600D79E8A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1884C63A1A26AE7900D79E8A /* MTDetailViewController.h */,
+				1884C63B1A26AE7900D79E8A /* MTDetailViewController.m */,
+				1884C63C1A26AE7900D79E8A /* MTDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		18C88FF01A22D72400913208 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,6 +796,7 @@
 				183761991A21BAE700225E57 /* categories.plist in Resources */,
 				183474121A255EF700EDBF75 /* MTDealCell.xib in Resources */,
 				1837612F1A21722500225E57 /* Images.xcassets in Resources */,
+				1884C63E1A26AE7900D79E8A /* MTDetailViewController.xib in Resources */,
 				1837619C1A21BAE700225E57 /* sorts.plist in Resources */,
 				18F44E161A25AE0900FFAFFB /* MBProgressHUD.bundle in Resources */,
 				183761F81A21D3A700225E57 /* MTRegionViewController.xib in Resources */,
@@ -777,6 +805,7 @@
 				1837619A1A21BAE700225E57 /* cities.plist in Resources */,
 				183761871A21B65A00225E57 /* MTHomeDropdown.xib in Resources */,
 				1837619B1A21BAE700225E57 /* cityGroups.plist in Resources */,
+				1884C6401A26BE4400D79E8A /* detail.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +845,7 @@
 				1834743C1A2562FF00EDBF75 /* SDWebImageManager.m in Sources */,
 				183761FC1A21D7A500225E57 /* MTCityViewController.m in Sources */,
 				18F44E0A1A257E8800FFAFFB /* MJRefreshFooterView.m in Sources */,
+				1884C63D1A26AE7900D79E8A /* MTDetailViewController.m in Sources */,
 				183474371A2562FF00EDBF75 /* SDImageCache.m in Sources */,
 				183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */,
 				18F44E171A25AE0900FFAFFB /* MBProgressHUD.m in Sources */,

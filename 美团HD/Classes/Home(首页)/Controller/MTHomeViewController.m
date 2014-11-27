@@ -303,8 +303,14 @@
 #pragma mark - 顶部item点击方法
 - (void)search
 {
-    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTSearchViewController alloc] init]];
-    [self presentViewController:nav animated:YES completion:nil];
+    if (self.selectedCityName) {
+        MTSearchViewController *searchVc = [[MTSearchViewController alloc] init];
+        searchVc.cityName = self.selectedCityName;
+        MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:searchVc];
+        [self presentViewController:nav animated:YES completion:nil];
+    } else {
+        [MBProgressHUD showError:@"请选择城市后再搜索" toView:self.view];
+    }
 }
 
 - (void)categoryClick

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MTDetailViewController">
+            <connections>
+                <outlet property="loadingView" destination="bgd-Aw-hCn" id="oSx-IW-LJb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="Bq4-nr-wdR" id="XfW-yP-zc9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9F-1X-QTr">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="400" id="R1c-cL-Cmy"/>
+                    </constraints>
+                </view>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bq4-nr-wdR">
+                    <rect key="frame" x="420" y="0.0" width="180" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="N5H-pO-y65"/>
+                    </connections>
+                </webView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bgd-Aw-hCn">
+                    <rect key="frame" x="500" y="290" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Bq4-nr-wdR" firstAttribute="centerX" secondItem="bgd-Aw-hCn" secondAttribute="centerX" id="1IO-wj-Mx9"/>
+                <constraint firstItem="G9F-1X-QTr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I2c-JX-eJE"/>
+                <constraint firstItem="Bq4-nr-wdR" firstAttribute="leading" secondItem="G9F-1X-QTr" secondAttribute="trailing" constant="20" id="WOg-6i-ld6"/>
+                <constraint firstItem="G9F-1X-QTr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X8r-BM-f3M"/>
+                <constraint firstItem="Bq4-nr-wdR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yzn-G6-nnu"/>
+                <constraint firstAttribute="bottom" secondItem="G9F-1X-QTr" secondAttribute="bottom" id="ZyW-bB-hIh"/>
+                <constraint firstAttribute="trailing" secondItem="Bq4-nr-wdR" secondAttribute="trailing" id="ebF-M0-A7z"/>
+                <constraint firstItem="Bq4-nr-wdR" firstAttribute="centerY" secondItem="bgd-Aw-hCn" secondAttribute="centerY" id="lwe-OL-I8R"/>
+                <constraint firstAttribute="bottom" secondItem="Bq4-nr-wdR" secondAttribute="bottom" id="wXK-qj-q7d"/>
+            </constraints>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+            <point key="canvasLocation" x="-13" y="-695"/>
+        </view>
+    </objects>
+</document>

@@ -15,6 +15,7 @@
 #import "MJExtension.h"
 #import "MTDeal.h"
 #import "UIView+Extension.h"
+#import "MTDetailViewController.h"
 #import "MBProgressHUD+MJ.h"
 
 @interface MTDealsViewController () <DPRequestDelegate>
@@ -183,4 +184,10 @@ static NSString * const reuseIdentifier = @"deal";
 }
 
 #pragma mark <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MTDetailViewController *detailVc = [[MTDetailViewController alloc] init];
+    detailVc.deal = self.deals[indexPath.item];
+    [self presentViewController:detailVc animated:YES completion:nil];
+}
 @end
