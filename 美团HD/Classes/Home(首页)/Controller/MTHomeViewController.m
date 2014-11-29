@@ -138,6 +138,9 @@
 
 - (void)awesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
+    // 半透明显示
+    menu.alpha = 0.5;
+    
     // 替换菜单的图片
     menu.contentImage = [UIImage imageNamed:@"icon_pathMenu_mainMine_normal"];
     
