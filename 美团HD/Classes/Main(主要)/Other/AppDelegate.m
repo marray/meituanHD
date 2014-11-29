@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import "MTHomeViewController.h"
 #import "MTNavigationController.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "PartnerConfig.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,6 +26,45 @@
     self.window.rootViewController = [[MTNavigationController alloc] initWithRootViewController:[[MTHomeViewController alloc] init]];
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    
+//}
+
+/**
+ *  当从其他应用跳转到当前应用时,就会调用这个方法
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    AlixPayResult * result = nil;
+    if (url != nil && [[url host] compare:@"safepay"] == 0) {
+        NSString * query = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#if ! __has_feature(objc_arc)
+        result = [[[AlixPayResult alloc] initWithString:query] autorelease];
+#else
+        result = [[AlixPayResult alloc] initWithString:query];
+#endif
+    }
+    
+    if (result.statusCode == 9000) {
+        /*
+         *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+         */
+        id<DataVerifier> verifier = CreateRSADataVerifier(AlipayPubKey);
+        if ([verifier verifyString:result.resultString withSign:result.signString]) {
+            //验证签名成功，交易结果无篡改
+            //交易成功
+            
+        } else { // 失败
+        
+        }
+    } else {
+        // 失败
+        
+    }
+    return  YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -14,6 +14,10 @@
 #import "MBProgressHUD+MJ.h"
 #import "MTRestrictions.h"
 #import "MTDealTool.h"
+#import "AlixLibService.h"
+#import "AlixPayOrder.h"
+#import "DataSigner.h"
+#import "PartnerConfig.h"
 
 @interface MTDetailViewController () <UIWebViewDelegate, DPRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -30,10 +34,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftTimeButton;
 @end
 
+// ShareSDK
+// 友盟分享
+// 百度分享
+
 @implementation MTDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 打开了一个团购 --> 访问了这个团购 ---> 增加到最近访问记录
+//    [MTDealTool addRec];
     
     // 基本设置
     self.view.backgroundColor = MTGlobalBg;
@@ -132,6 +143,31 @@
 }
 
 - (IBAction)buy {
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.deal.deal_url]];
+    // 1.生成订单信息
+    // 订单信息 == order == [order description]
+    AlixPayOrder *order = [[AlixPayOrder alloc] init];
+    order.productName = self.deal.title;
+    order.productDescription = self.deal.desc;
+    order.partner = PartnerID;
+    order.seller = SellerID;
+    order.amount = [self.deal.current_price description];
+    
+    // 2.签名加密
+    id<DataSigner> signer = CreateRSADataSigner(PartnerPrivKey);
+    // 签名信息 == signedString
+    NSString *signedString = [signer signString:[order description]];
+    
+    // 3.利用订单信息、签名信息、签名类型生成一个订单字符串
+    NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                             [order description], signedString, @"RSA"];
+    
+    // 4.打开客户端,进行支付(商品名称,商品价格,商户信息)
+    [AlixLibService payOrder:orderString AndScheme:@"tuangou" seletor:@selector(getResult:) target:self];
+}
+
+- (void)getResult:(NSString *)result
+{
     
 }
 
