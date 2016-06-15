@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class MTCategory, MTDeal;
+
 @interface MTMetaTool : NSObject
 
 /**
@@ -19,6 +21,7 @@
  *  返回所有的分类数据
  */
 + (NSArray *)categories;
++ (MTCategory *)categoryWithDeal:(MTDeal *)deal;
 
 /**
  *  返回所有的排序数据

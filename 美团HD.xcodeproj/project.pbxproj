@@ -66,6 +66,14 @@
 		183762001A21DAED00225E57 /* MTCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 183761FF1A21DAED00225E57 /* MTCity.m */; };
 		183762031A21DB8C00225E57 /* MTRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762021A21DB8C00225E57 /* MTRegion.m */; };
 		183762061A21DD2A00225E57 /* MTCityGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 183762051A21DD2A00225E57 /* MTCityGroup.m */; };
+		1840FA391A29A4AE004A582D /* MTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840FA371A29A4AE004A582D /* MTMapViewController.m */; };
+		1840FA3A1A29A4AE004A582D /* MTMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1840FA381A29A4AE004A582D /* MTMapViewController.xib */; };
+		1840FA3C1A29A5F1004A582D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840FA3B1A29A5F1004A582D /* SystemConfiguration.framework */; };
+		1840FA3E1A29A5F6004A582D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1840FA3D1A29A5F6004A582D /* CFNetwork.framework */; };
+		1840FA411A29B57C004A582D /* MTBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840FA401A29B57C004A582D /* MTBusiness.m */; };
+		1840FA451A29B6B9004A582D /* MTDealAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840FA441A29B6B9004A582D /* MTDealAnnotation.m */; };
+		1840FA481A29C9A8004A582D /* MTTempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840FA471A29C9A8004A582D /* MTTempViewController.m */; };
+		1840FA4B1A29CAEE004A582D /* MTHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1840FA4A1A29CAEE004A582D /* MTHttpTool.m */; };
 		18710D501A230E0500C7CD5B /* MTSort.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D4F1A230E0500C7CD5B /* MTSort.m */; };
 		18710D531A230E9300C7CD5B /* MTSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D521A230E9300C7CD5B /* MTSortViewController.m */; };
 		18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 18710D561A232C4500C7CD5B /* DPAPI.m */; };
@@ -240,6 +248,19 @@
 		183762021A21DB8C00225E57 /* MTRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTRegion.m; sourceTree = "<group>"; };
 		183762041A21DD2A00225E57 /* MTCityGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCityGroup.h; sourceTree = "<group>"; };
 		183762051A21DD2A00225E57 /* MTCityGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTCityGroup.m; sourceTree = "<group>"; };
+		1840FA361A29A4AE004A582D /* MTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTMapViewController.h; sourceTree = "<group>"; };
+		1840FA371A29A4AE004A582D /* MTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTMapViewController.m; sourceTree = "<group>"; };
+		1840FA381A29A4AE004A582D /* MTMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTMapViewController.xib; sourceTree = "<group>"; };
+		1840FA3B1A29A5F1004A582D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1840FA3D1A29A5F6004A582D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1840FA3F1A29B57C004A582D /* MTBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBusiness.h; sourceTree = "<group>"; };
+		1840FA401A29B57C004A582D /* MTBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBusiness.m; sourceTree = "<group>"; };
+		1840FA431A29B6B9004A582D /* MTDealAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTDealAnnotation.h; sourceTree = "<group>"; };
+		1840FA441A29B6B9004A582D /* MTDealAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTDealAnnotation.m; sourceTree = "<group>"; };
+		1840FA461A29C9A8004A582D /* MTTempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTempViewController.h; sourceTree = "<group>"; };
+		1840FA471A29C9A8004A582D /* MTTempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTempViewController.m; sourceTree = "<group>"; };
+		1840FA491A29CAEE004A582D /* MTHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHttpTool.h; sourceTree = "<group>"; };
+		1840FA4A1A29CAEE004A582D /* MTHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHttpTool.m; sourceTree = "<group>"; };
 		18710D4E1A230E0500C7CD5B /* MTSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSort.h; sourceTree = "<group>"; };
 		18710D4F1A230E0500C7CD5B /* MTSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSort.m; sourceTree = "<group>"; };
 		18710D511A230E9300C7CD5B /* MTSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSortViewController.h; sourceTree = "<group>"; };
@@ -342,6 +363,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1840FA3E1A29A5F6004A582D /* CFNetwork.framework in Frameworks */,
+				1840FA3C1A29A5F1004A582D /* SystemConfiguration.framework in Frameworks */,
 				18963D0D1A296F43008F2215 /* libssl.a in Frameworks */,
 				18963D031A296F43008F2215 /* AlixPaylib_arc.a in Frameworks */,
 				18963D011A296F43008F2215 /* AlipayRsaLib.a in Frameworks */,
@@ -403,6 +426,8 @@
 		183761151A21722500225E57 = {
 			isa = PBXGroup;
 			children = (
+				1840FA3D1A29A5F6004A582D /* CFNetwork.framework */,
+				1840FA3B1A29A5F1004A582D /* SystemConfiguration.framework */,
 				18C6C0B71A2714230025EA98 /* libsqlite3.dylib */,
 				183761201A21722500225E57 /* 美团HD */,
 				1837613A1A21722500225E57 /* 美团HDTests */,
@@ -459,12 +484,17 @@
 		1837615D1A218A1700225E57 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1840FA341A29A48A004A582D /* Map(地图) */,
 				1884C6381A26ADE600D79E8A /* Detail(详情) */,
 				18F44E271A25D55500FFAFFB /* Collect(收藏) */,
 				18F44E291A25D55500FFAFFB /* Recent(最近) */,
 				18F44E181A25B62A00FFAFFB /* Search(搜索) */,
 				1837615E1A218A1700225E57 /* Home(首页) */,
 				183761661A218A1700225E57 /* Main(主要) */,
+				1840FA461A29C9A8004A582D /* MTTempViewController.h */,
+				1840FA471A29C9A8004A582D /* MTTempViewController.m */,
+				1840FA491A29CAEE004A582D /* MTHttpTool.h */,
+				1840FA4A1A29CAEE004A582D /* MTHttpTool.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -600,6 +630,8 @@
 				1834740C1A255B7100EDBF75 /* MTDeal.m */,
 				18C6C0B41A2708A20025EA98 /* MTRestrictions.h */,
 				18C6C0B51A2708A20025EA98 /* MTRestrictions.m */,
+				1840FA3F1A29B57C004A582D /* MTBusiness.h */,
+				1840FA401A29B57C004A582D /* MTBusiness.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -647,6 +679,34 @@
 				183761B91A21BCAE00225E57 /* NSObject+MJMember.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		1840FA341A29A48A004A582D /* Map(地图) */ = {
+			isa = PBXGroup;
+			children = (
+				1840FA421A29B6A7004A582D /* Model */,
+				1840FA351A29A48A004A582D /* Controller */,
+			);
+			path = "Map(地图)";
+			sourceTree = "<group>";
+		};
+		1840FA351A29A48A004A582D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1840FA361A29A4AE004A582D /* MTMapViewController.h */,
+				1840FA371A29A4AE004A582D /* MTMapViewController.m */,
+				1840FA381A29A4AE004A582D /* MTMapViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1840FA421A29B6A7004A582D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1840FA431A29B6B9004A582D /* MTDealAnnotation.h */,
+				1840FA441A29B6B9004A582D /* MTDealAnnotation.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		18710D541A232C4500C7CD5B /* dianpingapi */ = {
@@ -948,6 +1008,7 @@
 				1837612F1A21722500225E57 /* Images.xcassets in Resources */,
 				1884C63E1A26AE7900D79E8A /* MTDetailViewController.xib in Resources */,
 				1837619C1A21BAE700225E57 /* sorts.plist in Resources */,
+				1840FA3A1A29A4AE004A582D /* MTMapViewController.xib in Resources */,
 				18F44E161A25AE0900FFAFFB /* MBProgressHUD.bundle in Resources */,
 				183761F81A21D3A700225E57 /* MTRegionViewController.xib in Resources */,
 				18963D021A296F43008F2215 /* Alixpay.bundle in Resources */,
@@ -979,6 +1040,8 @@
 				183761751A218A1700225E57 /* MTHomeViewController.m in Sources */,
 				183761BC1A21BCAE00225E57 /* MJFoundation.m in Sources */,
 				18C6C0CD1A2714660025EA98 /* MTDealTool.m in Sources */,
+				1840FA451A29B6B9004A582D /* MTDealAnnotation.m in Sources */,
+				1840FA4B1A29CAEE004A582D /* MTHttpTool.m in Sources */,
 				183761BA1A21BCAE00225E57 /* MJArgument.m in Sources */,
 				183474421A2562FF00EDBF75 /* UIImageView+HighlightedWebCache.m in Sources */,
 				18C6C0C91A27143A0025EA98 /* FMResultSet.m in Sources */,
@@ -1028,9 +1091,11 @@
 				183474411A2562FF00EDBF75 /* UIImage+WebP.m in Sources */,
 				183761861A21B65A00225E57 /* MTHomeDropdown.m in Sources */,
 				18F44E0D1A257E8800FFAFFB /* UIScrollView+MJRefresh.m in Sources */,
+				1840FA391A29A4AE004A582D /* MTMapViewController.m in Sources */,
 				18963D091A296F43008F2215 /* SBJsonBase.m in Sources */,
 				183474111A255EF700EDBF75 /* MTDealCell.m in Sources */,
 				183761C31A21BCAE00225E57 /* NSObject+MJKeyValue.m in Sources */,
+				1840FA481A29C9A8004A582D /* MTTempViewController.m in Sources */,
 				18710D5A1A232C4500C7CD5B /* DPAPI.m in Sources */,
 				1837617B1A218A1700225E57 /* AppDelegate.m in Sources */,
 				183761791A218A1700225E57 /* UIView+Extension.m in Sources */,
@@ -1040,6 +1105,7 @@
 				183474441A2562FF00EDBF75 /* UIView+WebCacheOperation.m in Sources */,
 				1834743D1A2562FF00EDBF75 /* SDWebImagePrefetcher.m in Sources */,
 				1837618A1A21B80100225E57 /* MTCategoryViewController.m in Sources */,
+				1840FA411A29B57C004A582D /* MTBusiness.m in Sources */,
 				18710D501A230E0500C7CD5B /* MTSort.m in Sources */,
 				18F44E251A25CD2A00FFAFFB /* AwesomeMenu.m in Sources */,
 				183761781A218A1700225E57 /* UIBarButtonItem+Extension.m in Sources */,

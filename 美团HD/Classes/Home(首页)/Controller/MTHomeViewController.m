@@ -29,6 +29,7 @@
 #import "AwesomeMenu.h"
 #import "MTCollectViewController.h"
 #import "MTRecentViewController.h"
+#import "MTMapViewController.h"
 
 @interface MTHomeViewController () <AwesomeMenuDelegate>
 /** 分类item */
@@ -60,8 +61,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNotifications];
-    
     // 设置导航栏内容
     [self setupLeftNav];
     [self setupRightNav];
@@ -70,9 +69,30 @@
     [self setupAwesomeMenu];
 }
 
-- (void)dealloc
+- (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:animated];
+    
     [MTNotificationCenter removeObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setupNotifications];
+}
+
+- (void)setupNotifications
+{
+    // 监听城市改变
+    [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
+    // 监听排序改变
+    [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
+    // 监听分类改变
+    [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
+    // 监听区域改变
+    [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
 }
 
 - (void)setupAwesomeMenu
@@ -103,18 +123,6 @@
     [menu autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0];
     [menu autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     [menu autoSetDimensionsToSize:CGSizeMake(200, 200)];
-}
-
-- (void)setupNotifications
-{
-    // 监听城市改变
-    [MTNotificationCenter addObserver:self selector:@selector(cityDidChange:) name:MTCityDidChangeNotification object:nil];
-    // 监听排序改变
-    [MTNotificationCenter addObserver:self selector:@selector(sortDidChange:) name:MTSortDidChangeNotification object:nil];
-    // 监听分类改变
-    [MTNotificationCenter addObserver:self selector:@selector(categoryDidChange:) name:MTCategoryDidChangeNotification object:nil];
-    // 监听区域改变
-    [MTNotificationCenter addObserver:self selector:@selector(regionDidChange:) name:MTRegionDidChangeNotification object:nil];
 }
 
 #pragma mark - AwesomeMenuDelegate
@@ -295,7 +303,7 @@
 
 - (void)setupRightNav
 {
-    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:nil action:nil image:@"icon_map" highImage:@"icon_map_highlighted"];
+    UIBarButtonItem *mapItem = [UIBarButtonItem itemWithTarget:self action:@selector(map) image:@"icon_map" highImage:@"icon_map_highlighted"];
     mapItem.customView.width = 60;
     
     UIBarButtonItem *searchItem = [UIBarButtonItem itemWithTarget:self action:@selector(search) image:@"icon_search" highImage:@"icon_search_highlighted"];
@@ -304,6 +312,12 @@
 }
 
 #pragma mark - 顶部item点击方法
+- (void)map
+{
+    MTNavigationController *nav = [[MTNavigationController alloc] initWithRootViewController:[[MTMapViewController alloc] init]];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
 - (void)search
 {
     if (self.selectedCityName) {
